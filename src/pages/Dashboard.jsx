@@ -1,5 +1,5 @@
 // src/pages/AffiliateDashboard.js
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import Breadcrumb from "../components/Breadcrumb";
 import StatCard from "../components/StatCard";
 import ReferralTable from "../components/ReferralTable";
@@ -12,6 +12,7 @@ import ClicksIcon from "../icons/total-coupon.svg";
 import OrdersIcon from "../icons/total-order.svg";
 import RevenueIcon from "../icons/total-revenue.svg";
 import LinkIcon from "../icons/total-link.svg";
+import AffiliateIntroModal from "../components/AffiliateIntroModal";
 
 const TAB_CONFIG = [
   { label: "Today So Far", value: FILTER_TYPES.TODAY },
@@ -30,6 +31,13 @@ const AffiliateDashboard = () => {
     () => filterRowsByFilter(REFERRAL_ROWS, activeFilter, customRange),
     [activeFilter, customRange]
   );
+
+  useEffect(() => {
+    const seen = localStorage.getItem(INTRO_KEY);
+    if (!seen) {
+      setShowIntro(true);
+    }
+  }, []);
 
   // 2. Build stats from filtered rows
   const stats = useMemo(() => {
@@ -58,7 +66,6 @@ const AffiliateDashboard = () => {
         title: "Total Revenue",
         value: totalRevenue.toLocaleString(),
         suffix: "/month",
-        currency: "₹",
         icon: RevenueIcon,
       },
       {
@@ -70,6 +77,15 @@ const AffiliateDashboard = () => {
       },
     ];
   }, [filteredRows]);
+
+  const INTRO_KEY = "affiliate_intro_seen";
+
+  const [showIntro, setShowIntro] = useState(false);
+
+  const handleCloseIntro = () => {
+    setShowIntro(false);
+    localStorage.setItem(INTRO_KEY, "true");
+  };
 
   return (
     <div className="affiliate-dashboard">
@@ -98,6 +114,7 @@ const AffiliateDashboard = () => {
 
       {/* Referral table – uses filtered rows */}
       <ReferralTable rows={filteredRows} />
+      <AffiliateIntroModal open={showIntro} onClose={handleCloseIntro} />
     </div>
   );
 };
