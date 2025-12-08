@@ -1,19 +1,11 @@
 import React from "react";
-import { APPOINTMENTS } from "../constants";
+import ComingSoonPlaceholder from "../components/CommingSoonPlaceholders";
 
-export default function Appointments() {
+export default function HomeDashboard() {
   return (
-    <div className="page appointments">
-      <h2>Appointments</h2>
-      <ul>
-        {APPOINTMENTS.map((a) => (
-          <li key={a.id} className="appt">
-            <div className="who">{a.patient}</div>
-            <div className="when">{a.time}</div>
-            <div className="status">{a.status}</div>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ComingSoonPlaceholder
+      title="Appointments"
+      subtitle="Your Appointment page will appear here soon."
+    />
   );
 }

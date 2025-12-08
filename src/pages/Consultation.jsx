@@ -1,11 +1,11 @@
 import React from "react";
 import ComingSoonPlaceholder from "../components/CommingSoonPlaceholders";
 
-export default function HomeDashboard() {
+export default function Consultation() {
   return (
     <ComingSoonPlaceholder
-      title="Dashboard"
-      subtitle="Your dashboard analytics will appear here soon."
+      title="Consultation"
+      subtitle="Your consultation page will appear here soon."
     />
   );
 }

@@ -15,7 +15,9 @@ export default function Sidebar({ collapsed }) {
 
   // Open Affiliate submenu automatically when on any /affiliate route
   const isAffiliatePath = location.pathname.startsWith("/affiliate");
+  const isWalletPath = location.pathname.startsWith("/wallet");
   const [affiliateOpen, setAffiliateOpen] = useState(isAffiliatePath);
+  const [walletOpen, setWalletOpen] = useState(isWalletPath);
 
   useEffect(() => {
     setAffiliateOpen(isAffiliatePath);
@@ -89,8 +91,8 @@ export default function Sidebar({ collapsed }) {
 
           <SidebarCollapsible
             label="Wallet"
-            isOpen={affiliateOpen}
-            onToggle={() => setAffiliateOpen((prev) => !prev)}
+            isOpen={walletOpen}
+            onToggle={() => setWalletOpen((prev) => !prev)}
             items={walletItems}
             icon={
               <img src={affiliateIcon} alt="Dashboard" className="menu-icon" />

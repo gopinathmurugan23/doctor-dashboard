@@ -722,3 +722,239 @@ body {
   justify-content: center;
   padding-inline: 0; /* optional: tighter look */
 }
+
+/* ------- Referral Tool layout ------- */
+
+.referral-card {
+  background-color: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  padding: 20px 22px 18px;
+  margin-bottom: 20px;
+}
+
+.referral-card-header h2 {
+  margin: 0 0 18px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.referral-product-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 180px;
+  gap: 24px;
+  align-items: flex-end;
+}
+
+.referral-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.referral-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.referral-small-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.required {
+  color: #f97316;
+}
+
+.referral-select-wrapper {
+  border-radius: 12px;
+  border: 1.5px solid #e5e7fb;
+  padding: 6px 10px;
+  background-color: #ffffff;
+}
+
+.referral-select {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #111827;
+  background: transparent;
+}
+
+.referral-helper {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.referral-primary-btn {
+  border: none;
+  border-radius: 12px;
+  padding: 10px 40px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #365d38;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.referral-primary-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* Product details section */
+
+.referral-details-row {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 24px;
+}
+
+.referral-product-image img {
+  width: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.referral-product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.referral-input-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 140px;
+  gap: 16px;
+  align-items: center;
+}
+
+.referral-input {
+  border-radius: 12px;
+  border: 1.5px solid #e5e7fb;
+  padding: 10px 12px;
+  font-size: 14px;
+  outline: none;
+  background-color: #fafbff;
+}
+
+.referral-input:read-only {
+  color: #6b7280;
+}
+
+.referral-note {
+  margin-top: 10px;
+  font-size: 12px;
+  font-style: italic;
+  color: #4b5563;
+}
+
+/* Stats row on referral page */
+
+.referral-stats-row {
+  margin-top: 4px;
+}
+
+/* Cart discount row */
+
+.referral-cart-row {
+  margin-top: 8px;
+}
+
+/* Responsive */
+
+@media (max-width: 960px) {
+  .referral-product-row {
+    grid-template-columns: 1fr;
+  }
+
+  .referral-details-row {
+    grid-template-columns: 1fr;
+  }
+
+  .referral-input-row {
+    grid-template-columns: 1fr;
+  }
+
+  .referral-primary-btn {
+    width: 100%;
+  }
+}
+
+.avatar-img-wrapper {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.status-paid {
+  color: #16a34a;
+  font-weight: 500;
+}
+
+.status-pending {
+  color: #dc2626;
+  font-weight: 500;
+}
+
+.comming-soon {
+  height: 100vh;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+/* ---------- Centered White Placeholder ----------- */
+
+.placeholder-page-wrapper {
+  min-height: calc(100vh - 120px); /* adjust based on header height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.placeholder-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+  padding: 48px 64px;
+  text-align: center;
+  max-width: 520px;
+  width: 100%;
+}
+
+.placeholder-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.placeholder-subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 18px;
+}
+
+.placeholder-badge {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 999px;
+  background-color: rgba(54, 93, 56, 0.1); /* your green theme */
+  color: #365d38;
+  font-size: 13px;
+  font-weight: 600;
+}

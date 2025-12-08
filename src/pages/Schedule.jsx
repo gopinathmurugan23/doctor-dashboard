@@ -1,18 +1,11 @@
 import React from "react";
-import { SCHEDULE } from "../constants";
+import ComingSoonPlaceholder from "../components/CommingSoonPlaceholders";
 
-export default function Schedule() {
+export default function HomeDashboard() {
   return (
-    <div className="page schedule">
-      <h2>Doctor Schedule</h2>
-      <div className="grid schedule-grid">
-        {SCHEDULE.map((s) => (
-          <div key={s.day} className="card">
-            <div className="day">{s.day}</div>
-            <div className="slots">{s.slots.join(", ")}</div>
-          </div>
-        ))}
-      </div>
-    </div>
+    <ComingSoonPlaceholder
+      title="Doctor Scedule"
+      subtitle="Your schedule analytics will appear here soon."
+    />
   );
 }

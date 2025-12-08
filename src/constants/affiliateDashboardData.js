@@ -1,6 +1,3 @@
-// src/constants/affiliateDashboardData.js
-
-// Breadcrumb
 export const AFFILIATE_BREADCRUMB = [
   { label: "Affiliate" },
   { label: "Dashboard", path: "/affiliate/dashboard" },
