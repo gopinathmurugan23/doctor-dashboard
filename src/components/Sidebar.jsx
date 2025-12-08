@@ -26,6 +26,7 @@ export default function Sidebar({ collapsed }) {
     { label: "Referral Tool", to: "/affiliate/referral-tool" },
     { label: "Earning History", to: "/affiliate/earning-history" },
   ];
+  const walletItems = [{ label: "Wallet", to: "/wallet" }];
 
   return (
     <div style={{ margin: "20px 0px" }}>
@@ -86,6 +87,15 @@ export default function Sidebar({ collapsed }) {
             }
           />
 
+          <SidebarCollapsible
+            label="Wallet"
+            isOpen={affiliateOpen}
+            onToggle={() => setAffiliateOpen((prev) => !prev)}
+            items={walletItems}
+            icon={
+              <img src={affiliateIcon} alt="Dashboard" className="menu-icon" />
+            }
+          />
           <SidebarCollapsible
             label="Affiliate"
             isOpen={affiliateOpen}

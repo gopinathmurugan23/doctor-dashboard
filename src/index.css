@@ -694,3 +694,31 @@ body {
   height: 22px;
   object-fit: contain;
 }
+
+/* Default layout */
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+}
+
+.sidebar-item-icon {
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* When collapsed → only show icons */
+.sidebar.collapsed .sidebar-item-label,
+.sidebar.collapsed .sidebar-arrow,
+.sidebar.collapsed .sidebar-submenu {
+  display: none;
+}
+
+/* Center icons in collapsed mode */
+.sidebar.collapsed .sidebar-item {
+  justify-content: center;
+  padding-inline: 0; /* optional: tighter look */
+}
