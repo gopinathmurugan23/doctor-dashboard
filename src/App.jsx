@@ -7,6 +7,7 @@ import Schedule from "./pages/Schedule";
 import Appointments from "./pages/Appointments";
 import Affiliate from "./pages/Affiliate";
 import { USER } from "./constants";
+import HomeDashboard from "./pages/HomeDashboard";
 
 export default function App() {
   const [collapsed, setCollapsed] = useState(false);
@@ -18,11 +19,13 @@ export default function App() {
       onToggleSidebar={() => setCollapsed(!collapsed)}
     >
       <Routes>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/" element={<HomeDashboard />} />
         <Route path="/patients" element={<Patients />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/appointments" element={<Appointments />} />
-        <Route path="/affiliate" element={<Affiliate />} />
+        <Route path="/affiliate/dashboard" element={<Dashboard />} />
+        <Route path="/affiliate/referral-tool" element={<Patients />} />
+        <Route path="/affiliate/earning-history" element={<Schedule />} />
       </Routes>
     </MainLayout>
   );

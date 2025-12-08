@@ -1,72 +1,105 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+// src/components/Sidebar.jsx
+import React, { useState, useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 
-// Example SVG imports (as React components)
-// Adjust paths/names to match your project
-import { ReactComponent as DashboardIcon } from "../assets/icons/dashboard.svg";
-import { ReactComponent as PatientsIcon } from "../assets/icons/patients.svg";
-import { ReactComponent as ScheduleIcon } from "../assets/icons/schedule.svg";
-import { ReactComponent as AppointmentIcon } from "../assets/icons/appointments.svg";
-import { ReactComponent as ChatIcon } from "../assets/icons/chat.svg";
-import { ReactComponent as ConsultationIcon } from "../assets/icons/consultation.svg";
-import { ReactComponent as AffiliateIcon } from "../assets/icons/affiliate.svg";
+import dashboardIcon from "../icons/dashboard-menu-icon.svg";
+import patientIcon from "../icons/patients-menu-icon.svg";
+import doctorScheduleIcon from "../icons/doctor-schedule-menu-icon.svg";
+import appointmentIcon from "../icons/appointment-menu-icon.svg";
+import chatIcon from "../icons/chat-menu-icon.svg";
+import consultationIcon from "../icons/consultation-menu-icon.svg";
+import affiliateIcon from "../icons/affiliate-menu-icon.svg";
 
 export default function Sidebar({ collapsed }) {
-  const [affiliateOpen, setAffiliateOpen] = useState(true);
+  const location = useLocation();
+
+  // Open Affiliate submenu automatically when on any /affiliate route
+  const isAffiliatePath = location.pathname.startsWith("/affiliate");
+  const [affiliateOpen, setAffiliateOpen] = useState(isAffiliatePath);
+
+  useEffect(() => {
+    setAffiliateOpen(isAffiliatePath);
+  }, [isAffiliatePath]);
 
   const affiliateItems = [
-    { label: "Dashboard", to: "/affiliate" },
+    { label: "Dashboard", to: "/affiliate/dashboard" },
     { label: "Referral Tool", to: "/affiliate/referral-tool" },
     { label: "Earning History", to: "/affiliate/earning-history" },
   ];
 
   return (
-    <div
-      className="layout-body"
-      style={{ margin: "20px 0px", width: "210px", height: "775px" }}
-    >
+    <div style={{ margin: "20px 0px" }}>
       <aside className={`sidebar ${collapsed ? "collapsed" : "open"}`}>
         <nav className="sidebar-inner">
           <div className="sidebar-section-title">Main</div>
 
-          <SidebarItem label="Dashboard" to="/" icon={<DashboardIcon />} />
+          <SidebarItem
+            label="Dashboard"
+            to="/"
+            icon={
+              <img src={dashboardIcon} alt="Dashboard" className="menu-icon" />
+            }
+          />
           <SidebarItem
             label="Patients"
             to="/patients"
-            icon={<PatientsIcon />}
+            icon={
+              <img src={patientIcon} alt="Dashboard" className="menu-icon" />
+            }
           />
           <SidebarItem
             label="Doctor Schedule"
             to="/schedule"
-            icon={<ScheduleIcon />}
+            icon={
+              <img
+                src={doctorScheduleIcon}
+                alt="Dashboard"
+                className="menu-icon"
+              />
+            }
           />
           <SidebarItem
             label="Appointments"
             to="/appointments"
-            icon={<AppointmentIcon />}
+            icon={
+              <img
+                src={appointmentIcon}
+                alt="Dashboard"
+                className="menu-icon"
+              />
+            }
           />
-          <SidebarItem label="Chat" to="/chat" icon={<ChatIcon />} />
+          <SidebarItem
+            label="Chat"
+            to="/chat"
+            icon={<img src={chatIcon} alt="Dashboard" className="menu-icon" />}
+          />
           <SidebarItem
             label="Consultation"
             to="/consultation"
-            icon={<ConsultationIcon />}
+            icon={
+              <img
+                src={consultationIcon}
+                alt="Dashboard"
+                className="menu-icon"
+              />
+            }
           />
 
-          {/* ONLY Affiliate has submenu */}
           <SidebarCollapsible
             label="Affiliate"
-            icon={<AffiliateIcon />}
             isOpen={affiliateOpen}
             onToggle={() => setAffiliateOpen((prev) => !prev)}
             items={affiliateItems}
+            icon={
+              <img src={affiliateIcon} alt="Dashboard" className="menu-icon" />
+            }
           />
         </nav>
       </aside>
     </div>
   );
 }
-
-/* ---------- Reusable items ---------- */
 
 const SidebarItem = ({ label, icon, to }) => (
   <NavLink
@@ -96,7 +129,7 @@ const SidebarCollapsible = ({ label, icon, isOpen, onToggle, items }) => (
             key={item.to}
             to={item.to}
             className={({ isActive }) =>
-              `sidebar-subitem ${isActive ? "subitem-active" : ""}`
+              `sidebar-item ${isActive ? "subitem-active" : ""}`
             }
           >
             {item.label}
