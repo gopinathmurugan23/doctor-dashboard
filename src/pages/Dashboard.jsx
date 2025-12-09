@@ -23,13 +23,11 @@ const AffiliateDashboard = () => {
   const [activeFilter, setActiveFilter] = useState(FILTER_TYPES.MONTH);
   const [customRange] = useState(null);
 
-  // 1. Filter rows by active tab
   const filteredRows = useMemo(
     () => filterRowsByFilter(REFERRAL_ROWS, activeFilter, customRange),
     [activeFilter, customRange]
   );
 
-  // 2. Build stats from filtered rows
   const stats = useMemo(() => {
     const totalClicks = filteredRows.reduce((sum, r) => sum + r.clicks, 0);
     const totalOrders = filteredRows.reduce((sum, r) => sum + r.orders, 0);

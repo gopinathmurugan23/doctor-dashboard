@@ -80,16 +80,13 @@ const ReferralTool = () => {
 
   return (
     <div className="affiliate-dashboard">
-      {/* Breadcrumb */}
       <Breadcrumb items={breadcrumbItems} />
 
-      {/* --- Product Link / Coupon card --- */}
       <div className="referral-card">
         <div className="referral-card-header">
           <h2>Product Link/Coupon</h2>
         </div>
 
-        {/* Top row – dropdown + Get button */}
         <div className="referral-product-row">
           <div className="referral-field">
             <label className="referral-label">
@@ -118,7 +115,6 @@ const ReferralTool = () => {
           </div>
         </div>
 
-        {/* When product selected – show details section */}
         {selectedProduct && (
           <>
             <div className="referral-details-row">
@@ -175,7 +171,6 @@ const ReferralTool = () => {
         )}
       </div>
 
-      {/* --- Stats row (only when product selected) --- */}
       {selectedProduct && (
         <div className="stat-card-row referral-stats-row">
           {stats.map((card) => (
@@ -184,7 +179,6 @@ const ReferralTool = () => {
         </div>
       )}
 
-      {/* --- Cart Discount section --- */}
       <div className="referral-card">
         <div className="referral-card-header">
           <h2>Cart Discount</h2>
