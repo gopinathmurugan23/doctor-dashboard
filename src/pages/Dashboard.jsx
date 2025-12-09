@@ -1,5 +1,4 @@
-// src/pages/AffiliateDashboard.js
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState } from "react";
 import Breadcrumb from "../components/Breadcrumb";
 import StatCard from "../components/StatCard";
 import ReferralTable from "../components/ReferralTable";
@@ -7,12 +6,11 @@ import {
   AFFILIATE_BREADCRUMB,
   REFERRAL_ROWS,
 } from "../constants/affiliateDashboardData";
-import { FILTER_TYPES, filterRowsByFilter } from "../utils/dateFilters"; // or local
+import { FILTER_TYPES, filterRowsByFilter } from "../utils/dateFilters";
 import ClicksIcon from "../icons/total-coupon.svg";
 import OrdersIcon from "../icons/total-order.svg";
 import RevenueIcon from "../icons/total-revenue.svg";
 import LinkIcon from "../icons/total-link.svg";
-import AffiliateIntroModal from "../components/AffiliateIntroModal";
 
 const TAB_CONFIG = [
   { label: "Today So Far", value: FILTER_TYPES.TODAY },
@@ -23,7 +21,6 @@ const TAB_CONFIG = [
 
 const AffiliateDashboard = () => {
   const [activeFilter, setActiveFilter] = useState(FILTER_TYPES.MONTH);
-  // for now we skip custom date picker & just keep null
   const [customRange] = useState(null);
 
   // 1. Filter rows by active tab
@@ -31,13 +28,6 @@ const AffiliateDashboard = () => {
     () => filterRowsByFilter(REFERRAL_ROWS, activeFilter, customRange),
     [activeFilter, customRange]
   );
-
-  useEffect(() => {
-    const seen = localStorage.getItem(INTRO_KEY);
-    if (!seen) {
-      setShowIntro(true);
-    }
-  }, []);
 
   // 2. Build stats from filtered rows
   const stats = useMemo(() => {
@@ -59,7 +49,7 @@ const AffiliateDashboard = () => {
         title: "Total Orders",
         value: totalOrders.toString(),
         suffix: "/month",
-        icon: OrdersIcon, // ✅ your uploaded design
+        icon: OrdersIcon,
       },
       {
         id: "revenue",
@@ -78,21 +68,10 @@ const AffiliateDashboard = () => {
     ];
   }, [filteredRows]);
 
-  const INTRO_KEY = "affiliate_intro_seen";
-
-  const [showIntro, setShowIntro] = useState(false);
-
-  const handleCloseIntro = () => {
-    setShowIntro(false);
-    localStorage.setItem(INTRO_KEY, "true");
-  };
-
   return (
     <div className="affiliate-dashboard">
-      {/* Breadcrumb */}
       <Breadcrumb items={AFFILIATE_BREADCRUMB} />
 
-      {/* Tabs row with active filter */}
       <div className="dashboard-tabs">
         {TAB_CONFIG.map((tab) => (
           <button
@@ -105,16 +84,13 @@ const AffiliateDashboard = () => {
         ))}
       </div>
 
-      {/* Stat cards – use computed stats */}
       <div className="stat-card-row">
         {stats.map((card) => (
           <StatCard key={card.id} {...card} />
         ))}
       </div>
 
-      {/* Referral table – uses filtered rows */}
       <ReferralTable rows={filteredRows} />
-      <AffiliateIntroModal open={showIntro} onClose={handleCloseIntro} />
     </div>
   );
 };

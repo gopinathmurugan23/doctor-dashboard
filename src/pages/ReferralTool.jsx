@@ -116,14 +116,6 @@ const ReferralTool = () => {
               patient.
             </div>
           </div>
-
-          <button
-            type="button"
-            className="referral-primary-btn"
-            disabled={!selectedId}
-          >
-            Get
-          </button>
         </div>
 
         {/* When product selected – show details section */}
