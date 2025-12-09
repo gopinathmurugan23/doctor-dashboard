@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
@@ -7,7 +6,6 @@ import Dashboard from "./pages/Dashboard";
 import Patients from "./pages/Patients";
 import Schedule from "./pages/Schedule";
 import Appointments from "./pages/Appointments";
-import Affiliate from "./pages/Affiliate"; // optional, not used in routes
 import { USER } from "./constants";
 import HomeDashboard from "./pages/HomeDashboard";
 import ReferralTool from "./pages/ReferralTool";
@@ -17,12 +15,11 @@ import Consultation from "./pages/Consultation";
 import Wallet from "./pages/Wallet";
 import AffiliateIntroModal from "./components/AffiliateIntroModal";
 
-const INTRO_KEY = "affiliate_intro_seen_v2"; // 🔁 new key so it shows again
+const INTRO_KEY = "affiliate_intro_seen_v2";
 
 export default function App() {
   const [collapsed, setCollapsed] = useState(false);
 
-  // decide initial state based on localStorage
   const [showIntro, setShowIntro] = useState(() => {
     if (typeof window === "undefined") return false;
     return !localStorage.getItem(INTRO_KEY);
@@ -33,7 +30,7 @@ export default function App() {
   const handleGetStarted = () => {
     localStorage.setItem(INTRO_KEY, "true");
     setShowIntro(false);
-    navigate("/affiliate/dashboard"); // redirect
+    navigate("/affiliate/dashboard");
   };
 
   return (
