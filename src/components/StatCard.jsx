@@ -1,5 +1,3 @@
-// src/components/StatCard.js
-
 const StatCard = ({ title, value, suffix, currency, icon }) => {
   return (
     <div className="stat-card">

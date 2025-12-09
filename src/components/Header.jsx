@@ -31,16 +31,24 @@ export default function Header({ user, onToggleSidebar }) {
       </div>
 
       <div className="header-right">
-        <img
-          src={"/images/mail-icon.svg"}
-          style={{ cursor: "pointer" }}
-          alt="mail-icon"
-        />
-        <img
-          src={"/images/bell-icon.svg"}
-          style={{ cursor: "pointer" }}
-          alt="notification-icon"
-        />
+        <div className="icon-wrapper">
+          <img
+            src={"/images/mail-icon.svg"}
+            style={{ cursor: "pointer" }}
+            alt="mail-icon"
+          />
+          <span className="badge-dot"></span>
+        </div>
+
+        <div className="icon-wrapper">
+          <img
+            src={"/images/bell-icon.svg"}
+            style={{ cursor: "pointer" }}
+            alt="notification-icon"
+          />
+          <span className="badge-dot"></span>
+        </div>
+
         <div
           className="user-info"
           style={{ color: "#3A643B", textAlign: "end" }}

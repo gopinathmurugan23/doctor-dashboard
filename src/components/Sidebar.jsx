@@ -1,4 +1,3 @@
-// src/components/Sidebar.jsx
 import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
@@ -13,7 +12,6 @@ import affiliateIcon from "../icons/affiliate-menu-icon.svg";
 export default function Sidebar({ collapsed }) {
   const location = useLocation();
 
-  // Open Affiliate submenu automatically when on any /affiliate route
   const isAffiliatePath = location.pathname.startsWith("/affiliate");
   const isWalletPath = location.pathname.startsWith("/wallet");
   const [affiliateOpen, setAffiliateOpen] = useState(isAffiliatePath);

@@ -1,4 +1,3 @@
-// src/components/AffiliateIntroModal.jsx
 import React from "react";
 import introImage from "../icons/affiliate-intro.svg";
 

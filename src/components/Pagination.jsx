@@ -1,5 +1,3 @@
-// src/components/Pagination.js
-
 const Pagination = ({ page, rowsPerPage, totalCount, onPageChange }) => {
   const totalPages = Math.ceil(totalCount / rowsPerPage) || 1;
   const start = totalCount === 0 ? 0 : page * rowsPerPage + 1;

@@ -1,5 +1,8 @@
 import { useMemo, useState } from "react";
 import Pagination from "./Pagination";
+import resetIcon from "../icons/reset.svg";
+import sortIcon from "../icons/sort.svg";
+import filterIcon from "../icons/filter.svg";
 
 const ReferralTable = ({ rows }) => {
   const [search, setSearch] = useState("");
@@ -17,7 +20,6 @@ const ReferralTable = ({ rows }) => {
     return filteredRows.slice(start, start + rowsPerPage);
   }, [filteredRows, page]);
 
-  // reset to first page when search changes
   const handleSearchChange = (e) => {
     setSearch(e.target.value);
     setPage(0);
@@ -25,21 +27,51 @@ const ReferralTable = ({ rows }) => {
 
   return (
     <div className="referral-table-card">
-      <div className="referral-table-header">
-        <h3>Referral Overview</h3>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div
+          style={{
+            flex: "1",
+            display: "flex",
+            width: "100%",
+            justifyContent: "flex-start",
+            alignItems: "center",
+            gap: "8px",
+          }}
+        >
+          <h3>Referral Overview</h3>
 
-        <div className="referral-table-search">
-          <input
-            placeholder="Search here"
-            value={search}
-            onChange={handleSearchChange}
-          />
-          <button className="refresh-btn">⟲</button>
+          <div className="search">
+            <img
+              src={`/images/search-icon.svg`}
+              alt="search-icon"
+              style={{ position: "absolute", padding: "5px" }}
+            />
+            <input
+              placeholder="Search here"
+              style={{
+                background: "#3A643B0D",
+                border: "none",
+                minWidth: "270px",
+                paddingLeft: "30px",
+              }}
+              value={search}
+              onChange={handleSearchChange}
+            />
+          </div>
+          <div>
+            <img src={resetIcon} style={{ cursor: "pointer" }} alt="" />
+          </div>
         </div>
-
         <div className="referral-table-actions">
-          <button className="icon-btn">⇅</button>
-          <button className="icon-btn">⚲</button>
+          <img src={sortIcon} style={{ cursor: "pointer" }} alt="" />
+          <img src={filterIcon} style={{ cursor: "pointer" }} alt="" />
         </div>
       </div>
 

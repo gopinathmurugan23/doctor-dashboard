@@ -1,4 +1,3 @@
-// src/components/Breadcrumb.js
 import { Link } from "react-router-dom";
 
 const Breadcrumb = ({ items }) => {
