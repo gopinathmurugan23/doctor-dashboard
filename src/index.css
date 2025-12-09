@@ -77,7 +77,7 @@ body {
 .avatar {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 15px;
 }
 .content {
   padding: 20px;
@@ -206,8 +206,9 @@ body {
   transition: transform 0.25s ease-out;
   background: #ffffff;
   border-right: 1px solid #edf0f4;
-  display: flex;
+  /* display: flex; */
   border-radius: 0px 20px 20px 0px;
+  min-height: 700px;
 }
 
 .sidebar.collapsed {
@@ -229,7 +230,6 @@ body {
 
 /* Sidebar items */
 .sidebar-item {
-  width: 100%;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -383,7 +383,7 @@ body {
   margin: 0 4px;
 }
 
-.breadcrumb-current {
+.breadcrumb-nt {
   color: #111827;
   font-weight: 500;
 }
@@ -502,6 +502,7 @@ body {
   border-radius: 999px;
   padding: 6px 12px;
   gap: 8px;
+  max-width: 210px;
 }
 
 .referral-table-search input {
@@ -1018,4 +1019,62 @@ body {
 
 .intro-primary-btn:hover {
   filter: brightness(1.02);
+}
+
+@media (max-width: 768px) {
+  /* Make the container relative so sidebar can be fixed over content */
+  .main-area {
+    position: relative;
+  }
+
+  /* Sidebar becomes an off-canvas drawer */
+  .sidebar {
+    position: fixed;
+    top: 64px; /* header height – adjust if your header is different */
+    left: 0;
+    bottom: 0;
+    width: 260px;
+    height: auto;
+    transform: translateX(-100%); /* hidden by default */
+    transition: transform 0.25s ease-out;
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.35);
+    z-index: 1000;
+  }
+
+  /* When not collapsed, slide in */
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* When collapsed, stay fully hidden */
+  .sidebar.collapsed {
+    transform: translateX(-100%);
+    width: 260px; /* keep full width in mobile, no skinny version */
+  }
+
+  /* On mobile we ALWAYS show labels inside, even if collapsed */
+  .sidebar.collapsed .sidebar-item-label {
+    display: inline;
+  }
+
+  /* Content should use full width */
+  .content {
+    width: 100%;
+  }
+}
+
+.icon-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-right: 12px;
+}
+
+.badge-dot {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
 }
