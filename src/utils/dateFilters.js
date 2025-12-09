@@ -1,5 +1,3 @@
-// src/utils/dateFilters.js (optional file)
-
 export const FILTER_TYPES = {
   TODAY: "today",
   WEEK: "week",
